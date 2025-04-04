@@ -1,11 +1,9 @@
-# api_server/utils.py
-import subprocess
+import sys
+import time
 
-def launch_node_container(cpu_cores, node_id):
-    container_name = f"node_{node_id}"
-    subprocess.run([
-        "docker", "run", "-d", "--name", container_name,
-        "-e", f"CPU_CORES={cpu_cores}", 
-        "your-node-image-name"
-    ])
-
+if __name__ == "__main__":
+    node_id = sys.argv[1]
+    print(f"Simulated Node {node_id} is running...")
+    while True:
+        time.sleep(5)
+        print(f"[{node_id}] Sending heartbeat...")
